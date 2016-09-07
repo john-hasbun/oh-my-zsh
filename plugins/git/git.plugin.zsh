@@ -28,7 +28,7 @@ function _git_log_prettily(){
 }
 # Warn if the current branch is a WIP
 function work_in_progress() {
-  if $(git log -n 1 2>/dev/null | grep -q -c "\-\-wip\-\-"); then
+  if $(git log -n 1 2>/dev/null | grep -q -c "\-\-WIP\-\-"); then
     echo "WIP!!"
   fi
 }
@@ -229,10 +229,10 @@ alias gts='git tag -s'
 alias gtv='git tag | sort -V'
 
 alias gunignore='git update-index --no-assume-unchanged'
-alias gunwip='git log -n 1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
+alias gunwip='git log -n 1 | grep -q -c "\-\-WIP\-\-" && git reset HEAD~1'
 alias gup='git pull --rebase'
 alias gupv='git pull --rebase -v'
 alias glum='git pull upstream master'
 
 alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
-alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit -m "--wip--"'
+alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit -m "--WIP--$2"'
